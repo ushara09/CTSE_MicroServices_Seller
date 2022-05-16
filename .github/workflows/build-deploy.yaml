@@ -3,6 +3,10 @@ name: Docker Build Deploy
 on:
   push:
     branches: [main]
+env:
+  GKE_PROJECT: ${{ secrets.GKE_PROJECT }}
+  GKE_ZONE: asia-southeast1-a
+  GKE_CLUSTER: shopping-api-seller
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,3 +28,17 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/ctse-shoppingapp-seller:${{ github.sha }}
+  Deploy:
+    need: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Deploy to GKE cluster
+        uses: ameydev/gke-kubectl-action@master
+        env:
+          PROJECT_ID: ${{  env.GKE_PROJECT }}
+          APPLICATION_CREDENTIALS: ${{ secrets.SELLERAPI_KEY }}
+          CLUSTER_NAME: ${{ env.GKE_CLUSTER }}
+          ZONE_NAME: ${{ env.GKE_ZONE }}
+        with:
+          args: apply -f ./k8s
