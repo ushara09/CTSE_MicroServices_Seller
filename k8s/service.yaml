@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2022-05-16T08:11:22Z"
+  labels:
+    app: ms-seller
+  name: ms-seller
+  namespace: default
+  resourceVersion: "1522"
+  uid: 19018a35-cb39-46df-9bd3-391a8cc696e5
+spec:
+  clusterIP: 10.102.114.8
+  clusterIPs:
+    - 10.102.114.8
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - port: 5000
+      protocol: TCP
+      targetPort: 5000
+  selector:
+    app: ms-seller
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
