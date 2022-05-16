@@ -6,8 +6,6 @@ metadata:
     app: ms-seller
   name: ms-seller
   namespace: default
-  resourceVersion: "1522"
-  uid: 19018a35-cb39-46df-9bd3-391a8cc696e5
 spec:
   clusterIP: 10.102.114.8
   clusterIPs:
@@ -23,6 +21,6 @@ spec:
   selector:
     app: ms-seller
   sessionAffinity: None
-  type: ClusterIP
-status:
-  loadBalancer: {}
+  type: LoadBalancer
+# status:
+#   loadBalancer: {}
