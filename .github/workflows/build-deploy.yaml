@@ -27,7 +27,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/ctse-shoppingapp-seller:${{ github.sha }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/ctse-shoppingapp-seller:v1
   Deploy:
     needs: build
     runs-on: ubuntu-latest
