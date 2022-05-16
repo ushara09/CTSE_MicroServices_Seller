@@ -25,7 +25,7 @@ spec:
         app: ms-seller
     spec:
       containers:
-        - image: ushara99/ctse-shoppingapp-seller
+        - image: ushara99/ctse-shoppingapp-seller:be9d27441c6c928cd7bfc81796653c8ccce068fa
           imagePullPolicy: Always
           name: ctse-shoppingapp-seller
           resources: {}
